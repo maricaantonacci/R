@@ -10,7 +10,7 @@ RUN apt-get update && \
         ansible wget
 
 
-RUN ansible-galaxy install maricaantonacci.r &&
+RUN ansible-galaxy install maricaantonacci.r && \
 ansible-playbook /etc/ansible/roles/maricaantonacci.r/tests/base.yml
 
 RUN wget --no-check-certificate -q -O - https://get.onedata.org/oneclient.sh | bash
