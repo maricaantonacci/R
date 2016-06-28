@@ -11,10 +11,9 @@ RUN apt-get update && \
 
 
 RUN ansible-galaxy install maricaantonacci.r && \
-ansible-playbook /etc/ansible/roles/maricaantonacci.r/tests/base.yml
-
-RUN wget --no-check-certificate -q -O - https://get.onedata.org/oneclient.sh | bash
-RUN apt-get install --only-upgrade libtbb2
+    ansible-galaxy install indigo-dc.oneclient && \
+    ansible-playbook /etc/ansible/roles/maricaantonacci.r/tests/base.yml && \
+    ansible-playbook /etc/ansible/roles/indigo-dc.oneclient/tests/test.yml
 
 RUN apt-get clean \
     && rm -rf /var/lib/apt/lists/*
